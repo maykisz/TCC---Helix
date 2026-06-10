@@ -36,7 +36,7 @@ export default function Faq() {
   return (
     <section className="faq" id="faq">
       <div className="faq-container">
-        <Reveal className="faq-left">
+        <Reveal className="faq-left" variant="slide-left" distance={56}>
           <span className="faq-badge">FAQ</span>
 
           <h2>
@@ -62,7 +62,7 @@ export default function Faq() {
           </div>
         </Reveal>
 
-        <Reveal className="faq-right" delay={120}>
+        <Reveal className="faq-right" delay={140} distance={56} variant="slide-right">
           {questions.map((item, index) => {
             const isActive = activeIndex === index;
 

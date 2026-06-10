@@ -128,7 +128,7 @@ export default function Home() {
       <main id="home">
         <div className="main-bg">
           <section className="hero">
-            <Reveal className="hero-content">
+            <Reveal className="hero-content" variant="pop" duration={850} distance={42}>
               <h1>
                 Software que transforma sua
                 <span>empresa em resultados</span>
@@ -143,18 +143,12 @@ export default function Home() {
               </a>
             </Reveal>
           </section>
-
-          <section className="dashboard" aria-label="Dashboard de exemplo">
-            <Reveal className="dashboard-content" delay={120}>
-              <img src="/img/tabela.png" alt="Dashboard com métricas" className="imgGrafico" />
-            </Reveal>
-          </section>
         </div>
 
         <section className="metrics">
           {metrics.map(([value, label], index) => (
             <div className="metric-group" key={label}>
-              <Reveal className="metric-card" delay={index * 100}>
+              <Reveal className="metric-card" delay={index * 120} variant="fade-down">
                 <h2>{value}</h2>
                 <p>{label}</p>
               </Reveal>
@@ -171,7 +165,7 @@ export default function Home() {
           </section>
 
           <div className="solutions-container">
-            <Reveal>
+            <Reveal variant="slide-left" distance={52}>
               <span className="solutions-badge">
                 <Icon name="dot" size={16} />
                 SOLUÇÕES DIGITAIS
@@ -198,7 +192,7 @@ export default function Home() {
               </div>
             </Reveal>
 
-            <Reveal className="dashboard-mockup-container" delay={160}>
+            <Reveal className="dashboard-mockup-container" delay={180} duration={900} variant="slide-right" distance={70}>
               <div className="glow-effect" />
               <img src="/img/notebook.png" alt="Dashboard em notebook" className="imgMockup" />
             </Reveal>
@@ -206,7 +200,7 @@ export default function Home() {
         </section>
 
         <section className="projects" id="projetos">
-          <Reveal>
+          <Reveal variant="fade-up" distance={58}>
             <span className="section-tag">
               <Icon name="dot" size={16} />
               PROJETOS
@@ -216,7 +210,14 @@ export default function Home() {
 
           <div className="projects-grid">
             {projects.map((project, index) => (
-              <Reveal as="article" className="project-card" delay={index * 120} key={project.title}>
+              <Reveal
+                as="article"
+                className="project-card"
+                delay={index * 140}
+                distance={58}
+                key={project.title}
+                variant={index % 2 === 0 ? "slide-left" : "slide-right"}
+              >
                 <img src={project.image} alt={project.title} />
                 <div className="project-info">
                   <h3>{project.title}</h3>
@@ -234,7 +235,7 @@ export default function Home() {
         </section>
 
         <section className="process">
-          <Reveal>
+          <Reveal variant="fade-up" distance={46}>
             <h2>Do zero ao deploy em 4 etapas</h2>
             <p>
               Metodologia ágil comprovada para entregar projetos de alta qualidade
@@ -242,7 +243,7 @@ export default function Home() {
             </p>
           </Reveal>
 
-          <Reveal className="timeline" aria-hidden="true" delay={120}>
+          <Reveal className="timeline" aria-hidden="true" delay={140} variant="line">
             <div className="line" />
             {steps.map((_, index) => (
               <div className="step" key={index + 1}>
@@ -253,7 +254,7 @@ export default function Home() {
 
           <div className="steps-grid">
             {steps.map((step, index) => (
-              <Reveal as="article" className="step-card" delay={index * 100} key={step.title}>
+              <Reveal as="article" className="step-card" delay={index * 120} key={step.title} variant="flip">
                 <div className="icon">
                   <Icon name={step.icon} size={32} />
                 </div>
@@ -268,7 +269,7 @@ export default function Home() {
         <section className="stats-highlight">
           <div className="stats-box">
             {stats.map(([icon, value, title, description], index) => (
-              <Reveal as="article" className="stat-item" delay={index * 100} key={title}>
+              <Reveal as="article" className="stat-item" delay={index * 110} key={title} variant="zoom">
                 <div className="stat-icon">
                   <Icon name={icon} />
                 </div>
@@ -282,7 +283,7 @@ export default function Home() {
 
         <Faq />
 
-        <Reveal as="section" className="social-proof">
+        <Reveal as="section" className="social-proof" variant="pop" distance={44}>
           <p>Empresas que confiam no nosso trabalho</p>
           <div className="logo-grid">
             <span>Google</span>
@@ -296,7 +297,7 @@ export default function Home() {
       </main>
 
       <footer id="contato">
-        <Reveal className="footer-content">
+        <Reveal className="footer-content" variant="fade-up" distance={48}>
           <div className="footer-grid">
             {footerColumns.map((column) => (
               <div className="footer-col" key={column.title}>

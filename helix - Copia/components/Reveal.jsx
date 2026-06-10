@@ -2,7 +2,16 @@
 
 import { useEffect, useRef, useState } from "react";
 
-export default function Reveal({ children, className = "", delay = 0, as: Tag = "div" }) {
+export default function Reveal({
+  children,
+  className = "",
+  delay = 0,
+  duration = 680,
+  distance = 64,
+  variant = "fade-up",
+  as: Tag = "div",
+  ...props
+}) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -15,14 +24,11 @@ export default function Reveal({ children, className = "", delay = 0, as: Tag = 
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.unobserve(entry.target);
-        }
+        setIsVisible(entry.isIntersecting);
       },
       {
-        rootMargin: "0px 0px -12% 0px",
-        threshold: 0.16
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.22
       }
     );
 
@@ -33,9 +39,14 @@ export default function Reveal({ children, className = "", delay = 0, as: Tag = 
 
   return (
     <Tag
-      className={`reveal ${isVisible ? "is-visible" : ""} ${className}`}
+      className={`reveal reveal-${variant} ${isVisible ? "is-visible" : ""} ${className}`}
       ref={ref}
-      style={{ "--reveal-delay": `${delay}ms` }}
+      style={{
+        "--reveal-delay": `${delay}ms`,
+        "--reveal-distance": `${distance}px`,
+        "--reveal-duration": `${duration}ms`
+      }}
+      {...props}
     >
       {children}
     </Tag>
