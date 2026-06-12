@@ -3,7 +3,6 @@
 import {
   ArrowUpRight,
   ChevronDown,
-  Code2,
   KanbanSquare,
   Sparkles,
 } from "lucide-react";
@@ -158,6 +157,92 @@ function useScrollReveal() {
 
     return () => observer.disconnect();
   }, []);
+}
+
+const transitionFrames = [
+  "frame_002.png",
+  "frame_004.png",
+  "frame_006.png",
+  "frame_007.png",
+  "frame_008.png",
+  "frame_010.png",
+  "frame_011.png",
+  "frame_012.png",
+  "frame_014.png",
+  "frame_015.png",
+  "frame_017.png",
+  "frame_020.png",
+  "frame_021.png",
+  "frame_023.png",
+  "frame_025.png",
+  "frame_026.png",
+  "frame_027.png",
+  "frame_029.png",
+  "frame_030.png",
+  "frame_031.png",
+  "frame_033.png",
+  "frame_034.png",
+  "frame_035.png",
+  "frame_036.png",
+  "frame_037.png",
+  "frame_038.png",
+  "frame_039.png",
+  "frame_041.png",
+  "frame_042.png",
+  "frame_043.png",
+  "frame_044.png",
+  "frame_045.png",
+  "frame_046.png",
+  "frame_047.png",
+  "frame_048.png",
+];
+
+function ScrollFrameSequence({ label }: { label: string }) {
+  const visualRef = useRef<HTMLDivElement>(null);
+  const [frameIndex, setFrameIndex] = useState(0);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const updateFrame = () => {
+      const visual = visualRef.current;
+      if (!visual) return;
+
+      const rect = visual.getBoundingClientRect();
+      const start = window.scrollY + rect.top - window.innerHeight * 0.58;
+      const end = start + window.innerHeight * 0.95;
+      const progress = Math.min(Math.max((window.scrollY - start) / (end - start), 0), 1);
+      const nextFrame = Math.round(progress * (transitionFrames.length - 1));
+
+      setFrameIndex((currentFrame) => (currentFrame === nextFrame ? currentFrame : nextFrame));
+      ticking = false;
+    };
+
+    const requestUpdate = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(updateFrame);
+    };
+
+    updateFrame();
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, []);
+
+  return (
+    <div className="scroll-frame-sequence" ref={visualRef}>
+      <img
+        src={`/transition/${transitionFrames[frameIndex]}`}
+        alt={label}
+        draggable={false}
+      />
+    </div>
+  );
 }
 
 type Lang = "pt" | "en";
@@ -350,97 +435,20 @@ export default function Home() {
           <a className="secondary-action" href="#">{t.hero.secondary}</a>
         </div>
 
-        <div
-          className="prototype-visual"
-          aria-label={lang === "pt" ? "Prévia de protótipo de sistema web" : "Dark web app prototype preview"}
-          data-reveal="zoom"
-        >
-          <div className="prototype-glow" />
-          <div className="prototype-card prototype-card-left" />
-          <div className="prototype-card prototype-card-right" />
-          <div className="dashboard-image">
-            <aside className="dash-sidebar">
-              <div className="dash-logo">
-                <Code2 size={17} />
-                Helix
-              </div>
-              <span>{t.mockup.navGroupA}</span>
-              <a className="active" href="#">{t.mockup.overview}</a>
-              <a href="#">{t.mockup.projects}</a>
-              <span>{t.mockup.navGroupB}</span>
-              <a href="#">{t.mockup.analytics}</a>
-              <a href="#">{t.mockup.clients}</a>
-              <a href="#">{t.mockup.deployments}</a>
-            </aside>
-
-            <div className="dash-main">
-              <div className="dash-topbar">
-                <span>{t.mockup.dashboards}</span>
-                <strong>{t.mockup.build}</strong>
-                <div className="dash-search">{t.mockup.search}</div>
-              </div>
-
-              <div className="dash-content">
-                <div className="dash-heading">
-                  <span>{t.mockup.overview}</span>
-                  <strong>{t.mockup.today}</strong>
-                </div>
-
-                <div className="metric-grid">
-                  <div>
-                    <small>{t.mockup.pages}</small>
-                    <strong>24</strong>
-                    <span>+18%</span>
-                  </div>
-                  <div>
-                    <small>{t.mockup.components}</small>
-                    <strong>86</strong>
-                    <span>+31%</span>
-                  </div>
-                  <div>
-                    <small>{t.mockup.routes}</small>
-                    <strong>17</strong>
-                    <span>+12%</span>
-                  </div>
-                </div>
-
-                <div className="chart-panel">
-                  <div className="chart-line" />
-                  <div className="chart-bars">
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                    <span />
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <aside className="dash-activity">
-              <strong>{t.mockup.notifications}</strong>
-              <div>
-                <span />
-                {t.mockup.notificationA}
-              </div>
-              <div>
-                <span />
-                {t.mockup.notificationB}
-              </div>
-              <div>
-                <span />
-                {t.mockup.notificationC}
-              </div>
-              <strong>{t.mockup.activity}</strong>
-              <div>
-                <span />
-                {t.mockup.activityA}
-              </div>
-            </aside>
-          </div>
-        </div>
       </section>
+
+      <div
+        className="transition-bridge"
+        aria-label={lang === "pt" ? "Sequência de frames de projeto em notebook" : "Project frame sequence on a laptop"}
+        data-reveal="zoom"
+      >
+        <div className="prototype-glow" />
+        <div className="prototype-card prototype-card-left" />
+        <div className="prototype-card prototype-card-right" />
+        <ScrollFrameSequence
+          label={lang === "pt" ? "Sequência de frames de projeto em notebook" : "Project frame sequence on a laptop"}
+        />
+      </div>
 
       <section className="trusted-section">
         <p className="trusted-kicker" data-reveal="up">{t.trusted.kicker}</p>
