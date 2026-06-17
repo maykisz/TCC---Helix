@@ -2,6 +2,7 @@ node_modules
 .next
 .env
 .env.local
+backend/data
 next-dev.log
 next-dev.err.log
 tsconfig.tsbuildinfo

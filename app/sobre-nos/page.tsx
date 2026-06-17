@@ -1,39 +1,79 @@
 "use client";
 
-import { ArrowUpRight, CheckCircle2, Plus } from "lucide-react";
+import {
+  ArrowUpRight,
+  CheckCircle2,
+  Code2,
+  LayoutDashboard,
+  MessagesSquare,
+  Rocket,
+  ShieldCheck,
+  Workflow,
+} from "lucide-react";
 import Link from "next/link";
 import { useEffect, type CSSProperties } from "react";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
 import styles from "./page.module.css";
 
-const partners = [
-  { name: "Orion", image: "/imgs/orion-logo.jpeg" },
-  { name: "Lumina", image: "/imgs/lumina-logo.png" },
-  { name: "GeneSys", image: "/imgs/genesys.png" },
+const whatsappHref =
+  "https://wa.me/5511940895758?text=Ola%2C%20quero%20criar%20um%20software%20sob%20medida%20para%20minha%20empresa.%20Podemos%20conversar%3F";
+
+const solutions = [
+  {
+    icon: LayoutDashboard,
+    title: "Sistemas internos",
+    text: "Painéis, áreas administrativas e fluxos para organizar a operação sem depender de planilhas soltas.",
+  },
+  {
+    icon: Rocket,
+    title: "Produtos SaaS",
+    text: "MVPs e plataformas com base preparada para evoluir, vender e receber novas funcionalidades.",
+  },
+  {
+    icon: Workflow,
+    title: "Automações",
+    text: "Integrações, formulários, notificações e rotinas que reduzem trabalho manual.",
+  },
 ];
 
 const principles = [
-  "Mais controle da operação",
-  "Mais confiança para vender",
-  "Base pronta para crescer",
+  "Clareza antes do código",
+  "Interface simples de usar",
+  "Base pronta para evoluir",
+  "Comunicação direta",
 ];
 
-const team = [
+const workflow = [
   {
-    name: "Marina Duarte",
-    role: "Direção de produto",
-    photo: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=700&q=82",
+    icon: MessagesSquare,
+    title: "Entendemos o cenário",
+    text: "Mapeamos problema, rotina, usuário, prioridade e o que precisa gerar resultado primeiro.",
   },
   {
-    name: "Rafael Nunes",
-    role: "Engenharia web",
-    photo: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=700&q=82",
+    icon: Code2,
+    title: "Desenhamos a solução",
+    text: "Transformamos o escopo em telas, regras e arquitetura para o desenvolvimento não virar improviso.",
   },
   {
-    name: "Bianca Torres",
-    role: "Design de interfaces",
-    photo: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=82",
+    icon: ShieldCheck,
+    title: "Construímos para durar",
+    text: "Entregamos uma base organizada, publicável e preparada para manutenção, ajustes e crescimento.",
+  },
+];
+
+const members = [
+  {
+    initials: "UI",
+    name: "Design de Produto",
+    role: "Experiência, interface e direção visual",
+    text: "Transforma processos confusos em telas simples, fluxos claros e uma experiência que parece feita para o dia a dia da empresa.",
+  },
+  {
+    initials: "DEV",
+    name: "Desenvolvimento",
+    role: "Arquitetura, código e publicação",
+    text: "Constrói a base técnica do sistema, integra ferramentas, publica a aplicação e prepara o produto para evoluir depois da primeira versão.",
   },
 ];
 
@@ -70,75 +110,74 @@ export default function SobreNosPage() {
       <section className={styles.shell}>
         <SiteHeader />
 
-        <section className={styles.hero} data-nav-theme="light">
+        <section className={styles.hero} data-nav-theme="dark">
+          <div className={styles.heroAtmosphere} />
           <div className={styles.heroCopy}>
-            <h1 className={styles.reveal} data-about-reveal="title">Sobre nós</h1>
+            <span className={`${styles.kicker} ${styles.reveal}`} data-about-reveal="text">
+              Sobre a Helix
+            </span>
+            <h1 className={styles.reveal} data-about-reveal="title">
+              <span>Software sob medida</span>
+              <span>sem improviso</span>
+            </h1>
             <p className={styles.reveal} data-about-reveal="text">
-              Criamos software sob medida para empresas que precisam operar melhor,
-              vender com mais confiança e crescer com estrutura.
+              Criamos software sob medida para transformar processos confusos em
+              sistemas claros, úteis e prontos para crescer com a empresa.
             </p>
             <div className={`${styles.heroActions} ${styles.reveal}`} data-about-reveal="pop">
-              <Link href="/contato">
-                Começar projeto
+              <a href={whatsappHref} target="_blank" rel="noreferrer">
+                Falar no WhatsApp
                 <ArrowUpRight size={16} />
-              </Link>
-              <Link href="/projetos">Ver projetos</Link>
+              </a>
+              <Link href="/contato">Enviar briefing</Link>
             </div>
           </div>
         </section>
 
         <section className={styles.trust} data-nav-theme="light">
           <div className={`${styles.trustCopy} ${styles.reveal}`} data-about-reveal="slide-left">
-            <h2>Parceiros e projetos</h2>
+            <span>O que fazemos</span>
+            <h2>Software para vender, operar e automatizar com mais controle.</h2>
           </div>
 
-          <div className={`${styles.partnersSlider} ${styles.reveal}`} data-about-reveal="fade">
-            <div className={`${styles.partnersRail} ${styles.partnersRailPrimary}`}>
-              {[...partners, ...partners, ...partners, ...partners].map((partner, index) => (
-                <div className={styles.partnerLogoCard} key={`primary-${partner.name}-${index}`}>
-                  <img src={partner.image} alt={partner.name} draggable={false} />
-                </div>
-              ))}
-            </div>
-
-            <div className={`${styles.partnersRail} ${styles.partnersRailSecondary}`} aria-hidden="true">
-              {[...partners].reverse().concat([...partners].reverse(), [...partners].reverse(), [...partners].reverse()).map((partner, index) => (
-                <div className={`${styles.partnerLogoCard} ${styles.partnerLogoCardGhost}`} key={`secondary-${partner.name}-${index}`}>
-                  <img src={partner.image} alt="" draggable={false} />
-                </div>
-              ))}
-            </div>
+          <div className={`${styles.solutionGrid} ${styles.reveal}`} data-about-reveal="fade">
+            {solutions.map((solution) => {
+              const Icon = solution.icon;
+              return (
+                <article key={solution.title}>
+                  <Icon size={24} />
+                  <h3>{solution.title}</h3>
+                  <p>{solution.text}</p>
+                </article>
+              );
+            })}
           </div>
         </section>
 
         <section className={styles.story} data-nav-theme="light">
           <article className={`${styles.storyMain} ${styles.reveal}`} data-about-reveal="card">
-            <h2>Mais clareza para operar, vender e evoluir.</h2>
+            <h2>A Helix existe para tirar software do improviso.</h2>
             <p>
-              Trabalhamos com empresas que precisam organizar dados, reduzir tarefas
-              manuais, validar produtos digitais e criar experiências que continuem
-              úteis depois do lançamento.
+              Muitas empresas sabem o que precisam melhorar, mas travam entre
+              ferramentas prontas demais, planilhas frágeis e ideias que nunca viram
+              produto. A Helix entra para organizar esse caminho: entendemos o
+              problema, desenhamos a solução e construímos software com foco em uso real.
             </p>
           </article>
 
           <article className={`${styles.metricCard} ${styles.reveal}`} data-about-reveal="slide-right">
-            <div className={styles.avatars}>
-              {team.map((person) => (
-                <img src={person.photo} alt="" key={person.name} />
-              ))}
-              <span><Plus size={20} /></span>
-            </div>
-            <strong>150k+</strong>
-            <p>usuários impactados por interfaces, fluxos e automações.</p>
+            <span>Direção</span>
+            <strong>Do briefing ao produto</strong>
+            <p>Estratégia, interface, desenvolvimento e evolução em uma rota clara.</p>
           </article>
 
           <article className={`${styles.noteCard} ${styles.reveal}`} data-about-reveal="card">
             <p>
-              Não vendemos apenas telas. Entregamos estrutura para que uma empresa
-              consiga operar melhor, vender com mais confiança e evoluir o produto
-              com menos atrito.
+              Não vendemos apenas telas. Entregamos sistemas que precisam fazer
+              sentido para quem usa, para quem opera e para quem vai continuar
+              evoluindo o produto depois da primeira versão.
             </p>
-            <Link href="/projetos">Ver projetos</Link>
+            <Link href="/contato">Enviar briefing</Link>
           </article>
         </section>
 
@@ -158,21 +197,55 @@ export default function SobreNosPage() {
 
         <section className={styles.teamSection} data-nav-theme="light">
           <div className={`${styles.sectionTitle} ${styles.reveal}`} data-about-reveal="title">
-            <h2>Pessoas por trás da Helix.</h2>
-            <p>Produto, engenharia e design trabalhando juntos para construir software com propósito.</p>
+            <h2>Nossa forma de trabalhar.</h2>
+            <p>Produto, design e desenvolvimento caminham juntos para o sistema nascer com direção, não como uma lista solta de tarefas.</p>
           </div>
 
           <div className={styles.teamGrid}>
-            {team.map((person, index) => (
+            {workflow.map((item, index) => {
+              const Icon = item.icon;
+              return (
               <article
                 className={styles.reveal}
                 data-about-reveal="photo"
-                key={person.name}
+                key={item.title}
                 style={{ "--reveal-delay": `${index * 110}ms` } as CSSProperties}
               >
-                <img src={person.photo} alt={person.name} />
-                <h3>{person.name}</h3>
-                <p>{person.role}</p>
+                <span>
+                  <Icon size={24} />
+                </span>
+                <h3>{item.title}</h3>
+                <p>{item.text}</p>
+              </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className={styles.membersSection} data-nav-theme="dark">
+          <div className={`${styles.membersIntro} ${styles.reveal}`} data-about-reveal="title">
+            <span>Integrantes</span>
+            <h2>Duas frentes trabalhando como um só produto.</h2>
+            <p>
+              A Helix une olhar de produto e execução técnica para que cada sistema
+              seja bonito, claro, publicável e pronto para evoluir.
+            </p>
+          </div>
+
+          <div className={styles.membersGrid}>
+            {members.map((member, index) => (
+              <article
+                className={styles.reveal}
+                data-about-reveal="card"
+                key={member.name}
+                style={{ "--reveal-delay": `${index * 120}ms` } as CSSProperties}
+              >
+                <div className={styles.memberAvatar}>{member.initials}</div>
+                <div>
+                  <h3>{member.name}</h3>
+                  <strong>{member.role}</strong>
+                  <p>{member.text}</p>
+                </div>
               </article>
             ))}
           </div>
@@ -180,18 +253,18 @@ export default function SobreNosPage() {
 
         <section className={styles.cta} data-nav-theme="light">
           <div className={`${styles.dealCard} ${styles.reveal}`} data-about-reveal="slide-left" aria-hidden="true">
-            <span>Pronto para fechar</span>
-            <strong>+ velocidade</strong>
-            <p>Uma proposta clara para transformar seu gargalo em um produto digital publicável.</p>
-            <small>Software, SaaS, automações e páginas de conversão.</small>
+            <span>Próximo passo</span>
+            <strong>Clareza para construir</strong>
+            <p>Uma conversa objetiva para entender o gargalo, definir prioridade e indicar o melhor caminho.</p>
+            <small>Sistemas internos, SaaS, automações e páginas de conversão.</small>
           </div>
           <div className={styles.reveal} data-about-reveal="slide-right">
             <h2>Vamos tirar seu software do papel?</h2>
             <p>Conte o que precisa vender, operar ou automatizar. A Helix organiza o caminho e constrói com foco em resultado.</p>
-            <Link href="/contato">
-              Fechar uma conversa
+            <a href={whatsappHref} target="_blank" rel="noreferrer">
+              Falar no WhatsApp
               <ArrowUpRight size={16} />
-            </Link>
+            </a>
           </div>
         </section>
       </section>

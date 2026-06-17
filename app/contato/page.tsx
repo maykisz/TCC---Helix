@@ -2,6 +2,7 @@ import { ArrowUpRight, Mail, MessageCircle, Phone } from "lucide-react";
 import Link from "next/link";
 import { SiteFooter } from "../components/SiteFooter";
 import { SiteHeader } from "../components/SiteHeader";
+import { ContactForm } from "./ContactForm";
 import styles from "./page.module.css";
 
 const contact = [
@@ -35,6 +36,17 @@ export default function ContatoPage() {
             </a>
           );
         })}
+      </section>
+
+      <section className={styles.formSection} data-nav-theme="dark">
+        <div>
+          <span>Briefing</span>
+          <h2>Envie os detalhes do projeto.</h2>
+          <p>
+            A mensagem fica salva no backend local do projeto para organizar os leads e próximos contatos.
+          </p>
+        </div>
+        <ContactForm />
       </section>
 
       <section className={styles.briefing} data-nav-theme="light">

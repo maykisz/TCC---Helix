@@ -7,14 +7,14 @@ import { handleNavClick } from "./utils";
 const copy = {
   nav: {
     home: "Início",
-    services: "Serviços",
-    cases: "Projetos",
-    process: "Processo",
-    solutions: "Soluções",
-    feedbacks: "Feedbacks",
+    about: "Sobre nós",
+    contactPage: "Contato",
     contact: "Criar software",
   },
 } as const;
+
+const whatsappHref =
+  "https://wa.me/5511940895758?text=Ola%2C%20quero%20criar%20um%20software%20sob%20medida%20para%20minha%20empresa.%20Podemos%20conversar%3F";
 
 export function Header() {
   const [isNavScrolled, setIsNavScrolled] = useState(false);
@@ -73,29 +73,17 @@ export function Header() {
           {copy.nav.home}
         </a>
 
-        <a href="#services" onClick={(event) => handleNavClick(event, "#services")}>
-          {copy.nav.services}
+        <a href="/sobre-nos">
+          {copy.nav.about}
         </a>
 
-        <a href="#projects" onClick={(event) => handleNavClick(event, "#projects")}>
-          {copy.nav.cases}
-        </a>
-
-        <a href="#process" onClick={(event) => handleNavClick(event, "#process")}>
-          {copy.nav.process}
-        </a>
-
-        <a href="#problems" onClick={(event) => handleNavClick(event, "#problems")}>
-          {copy.nav.solutions}
-        </a>
-
-        <a href="#testimonials" onClick={(event) => handleNavClick(event, "#testimonials")}>
-          {copy.nav.feedbacks}
+        <a href="/contato">
+          {copy.nav.contactPage}
         </a>
       </nav>
 
       <div className="header-actions">
-        <a className="contact-button" href="/contato">
+        <a className="contact-button" href={whatsappHref} target="_blank" rel="noreferrer">
           <span>{copy.nav.contact}</span>
           <ArrowUpRight size={14} />
         </a>

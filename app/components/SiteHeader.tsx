@@ -9,11 +9,13 @@ type SiteHeaderProps = {
 };
 
 const navLinks = [
+  { title: "Home", href: "/" },
   { title: "Sobre nós", href: "/sobre-nos" },
-  { title: "Serviços", href: "/servicos" },
-  { title: "Projetos", href: "/projetos" },
-  { title: "FAQ", href: "/faq" },
+  { title: "Contato", href: "/contato" },
 ];
+
+const whatsappHref =
+  "https://wa.me/5511940895758?text=Ola%2C%20quero%20criar%20um%20software%20sob%20medida%20para%20minha%20empresa.%20Podemos%20conversar%3F";
 
 export function SiteHeader({ theme = "light" }: SiteHeaderProps) {
   const [isLight, setIsLight] = useState(theme === "light");
@@ -61,9 +63,9 @@ export function SiteHeader({ theme = "light" }: SiteHeaderProps) {
         ))}
       </nav>
 
-      <Link className={styles.action} href="/contato">
+      <a className={styles.action} href={whatsappHref} target="_blank" rel="noreferrer">
         Criar software
-      </Link>
+      </a>
     </header>
   );
 }

@@ -5,10 +5,9 @@ import Link from "next/link";
 import styles from "./site-chrome.module.css";
 
 const pages = [
+  { title: "Home", href: "/" },
   { title: "Sobre nós", href: "/sobre-nos" },
-  { title: "Serviços", href: "/servicos" },
-  { title: "Projetos", href: "/projetos" },
-  { title: "FAQ", href: "/faq" },
+  { title: "Contato", href: "/contato" },
 ];
 
 const focus = [
@@ -21,8 +20,10 @@ const focus = [
 const company = [
   { title: "Processo", href: "/sobre-nos" },
   { title: "Contato", href: "/contato" },
-  { title: "Criar software", href: "/contato" },
 ];
+
+const whatsappHref =
+  "https://wa.me/5511940895758?text=Ola%2C%20quero%20criar%20um%20software%20sob%20medida%20para%20minha%20empresa.%20Podemos%20conversar%3F";
 
 export function SiteFooter() {
   return (
@@ -58,10 +59,10 @@ export function SiteFooter() {
           {company.map((link) => (
             <Link href={link.href} key={link.title}>{link.title}</Link>
           ))}
-          <Link className={styles.footerPill} href="/contato">
+          <a className={styles.footerPill} href={whatsappHref} target="_blank" rel="noreferrer">
             Agendar conversa
             <ArrowUpRight size={14} />
-          </Link>
+          </a>
         </div>
 
         <div className={styles.footerLine} />
