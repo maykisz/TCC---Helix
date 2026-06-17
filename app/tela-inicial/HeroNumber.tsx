@@ -2,38 +2,73 @@
 
 import { useEffect, useRef, useState } from "react";
 
-const stats = [
-  { value: 32, suffix: "+", label: "empresas ajudadas" },
-  { value: 58, suffix: "+", label: "projetos entregues" },
-  { value: 120, suffix: "+h", label: "ganhas com automação" },
-  { value: 100, suffix: "%", label: "soluções sob medida" },
+const benefits = [
+  {
+    value: 10,
+    suffix: "h+",
+    label: "economizadas por semana com automacao",
+  },
+  {
+    value: 70,
+    suffix: "%",
+    label: "mais potencial de venda com sites estrategicos",
+  },
+  {
+    value: 1,
+    suffix: "",
+    label: "sistema para centralizar dados e operacao",
+  },
+  {
+    value: 24,
+    suffix: "/7",
+    label: "atendimento e processos rodando no automatico",
+  },
 ] as const;
 
-/** Anima um número de 0 até `target` durante `duration` ms */
-function useCountUp(target: number, active: boolean, duration = 1400) {
+function useCountUp(target: number, active: boolean, delay = 0, duration = 1300) {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
     if (!active) return;
 
-    const start = performance.now();
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    function tick(now: number) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      // ease-out cubic
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.round(eased * target));
-      if (progress < 1) requestAnimationFrame(tick);
+    if (prefersReducedMotion) {
+      setCount(target);
+      return;
     }
 
-    requestAnimationFrame(tick);
-  }, [active, target, duration]);
+    let frameId = 0;
+    let timeoutId = 0;
+
+    timeoutId = window.setTimeout(() => {
+      const start = performance.now();
+
+      function tick(now: number) {
+        const elapsed = now - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+
+        setCount(Math.round(eased * target));
+
+        if (progress < 1) {
+          frameId = requestAnimationFrame(tick);
+        }
+      }
+
+      frameId = requestAnimationFrame(tick);
+    }, delay);
+
+    return () => {
+      window.clearTimeout(timeoutId);
+      cancelAnimationFrame(frameId);
+    };
+  }, [active, delay, duration, target]);
 
   return count;
 }
 
-interface StatItemProps {
+interface BenefitItemProps {
   value: number;
   suffix: string;
   label: string;
@@ -41,8 +76,8 @@ interface StatItemProps {
   delay: number;
 }
 
-function StatItem({ value, suffix, label, active, delay }: StatItemProps) {
-  const count = useCountUp(value, active, 1500);
+function BenefitItem({ value, suffix, label, active, delay }: BenefitItemProps) {
+  const count = useCountUp(value, active, delay);
 
   return (
     <article
@@ -73,7 +108,7 @@ export function HeroNumbers() {
           observer.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { threshold: 0.3 },
     );
 
     observer.observe(el);
@@ -83,8 +118,8 @@ export function HeroNumbers() {
   return (
     <section className="hero-numbers" data-nav-theme="light" ref={sectionRef}>
       <div className={`hero-numbers-card ${active ? "is-visible" : ""}`}>
-        {stats.map((item, i) => (
-          <StatItem
+        {benefits.map((item, i) => (
+          <BenefitItem
             key={item.label}
             value={item.value}
             suffix={item.suffix}

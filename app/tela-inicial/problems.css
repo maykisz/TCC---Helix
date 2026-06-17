@@ -23,15 +23,15 @@
 
 .problems-intro {
   display: grid;
-  gap: clamp(1.8rem, 3vw, 2.7rem);
-  margin-bottom: clamp(2.4rem, 4vw, 3.8rem);
+  gap: 0;
+  margin-bottom: clamp(2rem, 3.6vw, 3.2rem);
 }
 
 .problems-intro > p {
-  max-width: 1280px;
+  max-width: 1180px;
   margin: 0;
   color: #17191f;
-  font-size: clamp(2.1rem, 3.9vw, 4.05rem);
+  font-size: clamp(2rem, 3.55vw, 3.65rem);
   font-weight: 400;
   letter-spacing: -0.055em;
   line-height: 1.08;
@@ -325,13 +325,6 @@
     font-size: clamp(2rem, 5.2vw, 3.6rem);
   }
 
-  .problems-stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .problem-stat-card {
-    min-height: 135px;
-  }
 }
 
 @media (max-width: 760px) {
@@ -344,23 +337,13 @@
   }
 
   .problems-intro {
-    gap: 1.5rem;
+    gap: 0;
     margin-bottom: 2rem;
   }
 
   .problems-intro > p {
     font-size: clamp(1.9rem, 9vw, 2.85rem);
     line-height: 1.06;
-  }
-
-  .problems-stats {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .problem-stat-card {
-    min-height: 120px;
-    border-radius: 14px;
   }
 
   .problems-showcase {

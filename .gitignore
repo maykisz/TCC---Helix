@@ -8,3 +8,6 @@ next-dev.err.log
 tsconfig.tsbuildinfo
 
 .vercel
+
+.vercel
+.env*

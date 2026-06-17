@@ -30,8 +30,8 @@ const problems = [
   },
   {
     number: "05",
-    title: "Operação sem clareza",
-    text: "Visualize etapas, responsáveis e indicadores para tomar decisões com mais segurança.",
+    title: "Vendas sem acompanhamento",
+    text: "Organize leads, propostas e etapas comerciais para não perder oportunidades no caminho.",
     image: "/imgs/problems/operacao.jpg",
   },
   {
@@ -42,25 +42,6 @@ const problems = [
   },
 ] as const;
 
-const stats = [
-  {
-    value: "12+",
-    text: "Projetos digitais estruturados para empresas e operações reais.",
-  },
-  {
-    value: "300h+",
-    text: "Horas economizadas com automações, sistemas e processos internos.",
-  },
-  {
-    value: "95%",
-    text: "Mais clareza na gestão de dados, tarefas e acompanhamento operacional.",
-  },
-  {
-    value: "40%",
-    text: "Menos retrabalho usando ferramentas digitais sob medida.",
-  },
-] as const;
-
 export function Problems() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -68,13 +49,13 @@ export function Problems() {
 
   const goToPrev = () => {
     setActiveIndex((current) =>
-      current === 0 ? problems.length - 1 : current - 1
+      current === 0 ? problems.length - 1 : current - 1,
     );
   };
 
   const goToNext = () => {
     setActiveIndex((current) =>
-      current === problems.length - 1 ? 0 : current + 1
+      current === problems.length - 1 ? 0 : current + 1,
     );
   };
 
@@ -83,17 +64,9 @@ export function Problems() {
       <div className="problems-wrapper">
         <div className="problems-intro" data-reveal="up">
           <p>
-            Sistemas, automações e produtos digitais sob medida. Para empresas que querem operar com clareza, velocidade e controle.
+            Se sua operação depende de planilhas, mensagens soltas e tarefas
+            manuais, a tecnologia certa pode virar controle, tempo e venda.
           </p>
-
-          <div className="problems-stats">
-            {stats.map((stat) => (
-              <div className="problem-stat-card" key={stat.value}>
-                <span className="problem-stat-value">{stat.value}</span>
-                <span className="problem-stat-text">{stat.text}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="problems-showcase" data-reveal="cards">
@@ -124,7 +97,7 @@ export function Problems() {
                   <p>{problem.text}</p>
 
                   <a href="/contato" className="problem-link">
-                    Ver solução
+                    Resolver isso
                     <ArrowUpRight size={15} />
                   </a>
                 </div>

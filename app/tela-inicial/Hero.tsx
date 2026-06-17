@@ -5,12 +5,12 @@ import { handleNavClick } from "./utils";
 
 const copy = {
   hero: {
-    titleA: "Sistemas web para empresas",
-    titleB: "que crescem sem improviso",
+    titleA: "Sistemas web sob medida",
+    titleB: "para automatizar sua operação",
     description:
-      "Desenvolvemos sites, sistemas internos e plataformas SaaS para empresas que precisam automatizar processos, organizar dados e crescer com mais controle.",
+      "Criamos sistemas internos, automações e plataformas SaaS para empresas que precisam organizar processos, centralizar dados e crescer com mais controle.",
     primary: "Tirar ideia do papel",
-    secondary: "Ver projetos",
+    secondary: "Ver protótipos",
   },
 } as const;
 
@@ -38,8 +38,8 @@ export function Hero() {
 
             <a
               className="secondary-action"
-              href="#projects"
-              onClick={(event) => handleNavClick(event, "#projects")}
+              href="#prototypes"
+              onClick={(event) => handleNavClick(event, "#prototypes")}
             >
               {copy.hero.secondary}
             </a>
