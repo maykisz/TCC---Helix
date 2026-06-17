@@ -1,106 +1,152 @@
 "use client";
 
-import { useRef, useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 
-const copy = {
-  problems: {
-    items: [
-      {
-        title: "Processos manuais demorados",
-        text: "Automatize rotinas repetitivas e reduza o tempo gasto em tarefas operacionais.",
-      },
-      {
-        title: "Planilhas desorganizadas",
-        text: "Centralize dados, etapas e indicadores em uma interface clara para sua equipe.",
-      },
-      {
-        title: "Falta de sistema interno",
-        text: "Crie ferramentas sob medida para acompanhar solicitações, clientes e produção.",
-      },
-      {
-        title: "Ideia de SaaS sem equipe técnica",
-        text: "Transforme uma oportunidade em produto navegável com base pronta para evoluir.",
-      },
-    ],
+const problems = [
+  {
+    number: "01",
+    title: "Processos manuais demorados",
+    text: "Automatize rotinas repetitivas, reduza retrabalho e devolva tempo operacional para a equipe.",
+    image: "/imgs/problems/processos.jpg",
   },
-} as const;
+  {
+    number: "02",
+    title: "Planilhas desorganizadas",
+    text: "Centralize indicadores, etapas e dados em uma interface clara para acompanhar tudo sem confusão.",
+    image: "/imgs/problems/planilhas.jpg",
+  },
+  {
+    number: "03",
+    title: "Falta de sistema interno",
+    text: "Crie ferramentas sob medida para acompanhar solicitações, clientes, produção e fluxos internos.",
+    image: "/imgs/problems/sistema.jpg",
+  },
+  {
+    number: "04",
+    title: "Ideia de SaaS sem equipe técnica",
+    text: "Transforme uma oportunidade em produto navegável com base pronta para evoluir e escalar.",
+    image: "/imgs/problems/saas.jpg",
+  },
+  {
+    number: "05",
+    title: "Operação sem clareza",
+    text: "Visualize etapas, responsáveis e indicadores para tomar decisões com mais segurança.",
+    image: "/imgs/problems/operacao.jpg",
+  },
+  {
+    number: "06",
+    title: "Atendimento desorganizado",
+    text: "Padronize fluxos, respostas e solicitações para melhorar a experiência do cliente.",
+    image: "/imgs/problems/atendimento.jpg",
+  },
+] as const;
+
+const stats = [
+  {
+    value: "12+",
+    text: "Projetos digitais estruturados para empresas e operações reais.",
+  },
+  {
+    value: "300h+",
+    text: "Horas economizadas com automações, sistemas e processos internos.",
+  },
+  {
+    value: "95%",
+    text: "Mais clareza na gestão de dados, tarefas e acompanhamento operacional.",
+  },
+  {
+    value: "40%",
+    text: "Menos retrabalho usando ferramentas digitais sob medida.",
+  },
+] as const;
 
 export function Problems() {
-  const problemListRef = useRef<HTMLDivElement>(null);
-  const [activeProblem, setActiveProblem] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  function scrollProblemSlider(direction: "prev" | "next") {
-    const list = problemListRef.current;
+  const activeProblem = problems[activeIndex];
 
-    if (!list) {
-      return;
-    }
+  const goToPrev = () => {
+    setActiveIndex((current) =>
+      current === 0 ? problems.length - 1 : current - 1
+    );
+  };
 
-    const card = list.querySelector<HTMLElement>(".problem-item");
-    const cardWidth = card?.offsetWidth ?? list.clientWidth;
-    const gap = Number.parseFloat(window.getComputedStyle(list).columnGap || "0");
-    const step = cardWidth + gap;
-    const nextIndex =
-      direction === "next"
-        ? Math.min(copy.problems.items.length - 1, activeProblem + 1)
-        : Math.max(0, activeProblem - 1);
-
-    setActiveProblem(nextIndex);
-    list.scrollBy({ left: direction === "next" ? step : -step, behavior: "smooth" });
-  }
+  const goToNext = () => {
+    setActiveIndex((current) =>
+      current === problems.length - 1 ? 0 : current + 1
+    );
+  };
 
   return (
-    <section className="section problems-section" id="problems" data-nav-theme="dark">
-      <div className="problems-header" data-reveal="split">
-        <div className="problems-copy">
-          <span className="problems-kicker">Desafios que resolvemos</span>
-          <h2>
-            Quando o negócio cresce,
-            <br />
-            improvisar custa caro.
-          </h2>
+    <section className="problems-section" id="problems" data-nav-theme="light">
+      <div className="problems-wrapper">
+        <div className="problems-intro" data-reveal="up">
+          <p>
+            Sistemas, automações e produtos digitais sob medida. Para empresas que querem operar com clareza, velocidade e controle.
+          </p>
+
+          <div className="problems-stats">
+            {stats.map((stat) => (
+              <div className="problem-stat-card" key={stat.value}>
+                <span className="problem-stat-value">{stat.value}</span>
+                <span className="problem-stat-text">{stat.text}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="problems-aside">
-          <span className="problems-counter">
-            {String(activeProblem + 1).padStart(2, "0")} / {String(copy.problems.items.length).padStart(2, "0")}
-          </span>
-          <div className="problems-controls" aria-label="Navegar desafios">
-            <button
-              type="button"
-              aria-label="Desafio anterior"
-              onClick={() => scrollProblemSlider("prev")}
-            >
-              <ArrowUpRight size={16} />
+        <div className="problems-showcase" data-reveal="cards">
+          <div className="problems-track">
+            {problems.map((problem, index) => (
+              <article
+                key={problem.number}
+                className={`problem-slide ${
+                  index === activeIndex ? "is-active" : ""
+                }`}
+                aria-hidden={index !== activeIndex}
+              >
+                <div className="problem-image-wrap">
+                  <img
+                    src={problem.image}
+                    alt={problem.title}
+                    draggable={false}
+                  />
+                </div>
+
+                <div className="problem-slide-shade" />
+
+                <div className="problem-slide-content">
+                  <span className="problem-number">{problem.number}</span>
+
+                  <h3>{problem.title}</h3>
+
+                  <p>{problem.text}</p>
+
+                  <a href="/contato" className="problem-link">
+                    Ver solução
+                    <ArrowUpRight size={15} />
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="problems-counter">
+            <span>{activeProblem.number}</span>
+            <small>/ {String(problems.length).padStart(2, "0")}</small>
+          </div>
+
+          <div className="problems-controls">
+            <button type="button" onClick={goToPrev} aria-label="Voltar slide">
+              <ArrowLeft size={18} />
             </button>
-            <i />
-            <button
-              type="button"
-              aria-label="Próximo desafio"
-              onClick={() => scrollProblemSlider("next")}
-            >
-              <ArrowUpRight size={16} />
+
+            <button type="button" onClick={goToNext} aria-label="Avançar slide">
+              <ArrowRight size={18} />
             </button>
           </div>
         </div>
-      </div>
-
-      <div className="problem-list" data-reveal="cards" ref={problemListRef}>
-        {copy.problems.items.map((item, index) => (
-          <article
-            className={`problem-item ${activeProblem === index ? "active" : ""}`}
-            key={item.title}
-            onClick={() => setActiveProblem(index)}
-            onMouseEnter={() => setActiveProblem(index)}
-          >
-            <span className="problem-icon">{String(index + 1).padStart(2, "0")}</span>
-            <div>
-              <strong>{item.title}</strong>
-              <p>{item.text}</p>
-            </div>
-          </article>
-        ))}
       </div>
     </section>
   );

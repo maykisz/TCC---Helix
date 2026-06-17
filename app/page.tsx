@@ -10,6 +10,8 @@ import { Projects } from "./tela-inicial/Projects";
 import { Process } from "./tela-inicial/Process";
 import { Testimonials } from "./tela-inicial/Testimonials";
 import { Faq } from "./tela-inicial/Faq";
+import { HeroNumbers } from "./tela-inicial/HeroNumber";
+import { PrototypeShowcase } from "./tela-inicial/PrototypeShowcase";
 
 // Imports de estilos locais das seções
 import "./tela-inicial/header.css";
@@ -20,6 +22,8 @@ import "./tela-inicial/projects.css";
 import "./tela-inicial/process.css";
 import "./tela-inicial/testimonials.css";
 import "./tela-inicial/faq.css";
+import "./tela-inicial/heronumber.css";
+import "./tela-inicial/PrototypeShowcase.css";
 
 function useScrollReveal() {
   useEffect(() => {
@@ -29,7 +33,7 @@ function useScrollReveal() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            entry.target.classList.add  ("is-visible");
             observer.unobserve(entry.target);
           }
         });
@@ -60,9 +64,10 @@ export default function Home() {
 
       <Header />
       <Hero />
+      <HeroNumbers />
       <Services />
       <Problems />
-      <Projects />
+      <PrototypeShowcase />
       <Process />
       <Testimonials />
       <Faq />

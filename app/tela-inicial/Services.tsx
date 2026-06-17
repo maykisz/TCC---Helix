@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { handleNavClick } from "./utils";
 
 const partnerLogos = [
   { name: "Orion", image: "/imgs/orion-logo.jpeg" },
@@ -8,101 +9,100 @@ const partnerLogos = [
   { name: "GeneSys", image: "/imgs/genesys.png" },
 ] as const;
 
+const stats = [
+  {
+    value: "03",
+    label: "tipos de solução",
+  },
+  {
+    value: "04",
+    label: "etapas de entrega",
+  },
+  {
+    value: "100%",
+    label: "sob medida",
+  },
+] as const;
+
 export function Services() {
-  const servicesShowcaseRef = useRef<HTMLDivElement>(null);
-  const hasCompletedServicesAnimationRef = useRef(false);
-  const [servicesVideoStep, setServicesVideoStep] = useState(0);
-
-  useEffect(() => {
-    const updateServicesAnimation = () => {
-      const triggerElement = servicesShowcaseRef.current;
-
-      if (!triggerElement || window.matchMedia("(max-width: 720px)").matches) {
-        setServicesVideoStep(0);
-        hasCompletedServicesAnimationRef.current = true;
-        return;
-      }
-
-      if (hasCompletedServicesAnimationRef.current) {
-        return;
-      }
-
-      const rect = triggerElement.getBoundingClientRect();
-      const progress = Math.min(
-        1,
-        Math.max(0, (window.innerHeight * 0.62 - rect.top) / (window.innerHeight * 0.72))
-      );
-
-      setServicesVideoStep(progress > 0.72 ? 2 : progress > 0.34 ? 1 : 0);
-
-      if (progress >= 1) {
-        setServicesVideoStep(2);
-        hasCompletedServicesAnimationRef.current = true;
-      }
-    };
-
-    updateServicesAnimation();
-    window.addEventListener("scroll", updateServicesAnimation, { passive: true });
-    window.addEventListener("resize", updateServicesAnimation);
-
-    return () => {
-      window.removeEventListener("scroll", updateServicesAnimation);
-      window.removeEventListener("resize", updateServicesAnimation);
-    };
-  }, []);
-
   return (
-    <section className="section services-section" id="services" data-nav-theme="light">
-      <div
-        className={`services-showcase services-video-step-${servicesVideoStep}`}
-        ref={servicesShowcaseRef}
-      >
-        <div className="services-pin-frame">
-          <div className="services-intro">
-            <h2>
-              Do rascunho ao ar <br />
-              robusto, limpo, pronto pra crescer
-            </h2>
-          </div>
-
-          <div className="services-video-stage" aria-hidden="true">
-            <div className="service-video-card service-video-primary">
-              <video autoPlay muted loop playsInline preload="metadata">
-                <source src="/video/Code_compiles_website_loads_success_202606132222.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div className="service-video-card service-video-secondary">
-              <video autoPlay muted loop playsInline preload="metadata">
-                <source src="/video/Chat_to_product_development_202606132243.mp4" type="video/mp4" />
-              </video>
-            </div>
-          </div>
+    <section className="services-section" id="services" data-nav-theme="light">
+      <div className="services-about">
+        <div className="services-image-wrap" data-reveal="fade-left">
+          <img
+            src="imgs/services-left.png"
+            alt="Ilustração de sistema web em desenvolvimento"
+            draggable={false}
+          />
         </div>
 
-        <div className="partners-showcase" aria-label="Parceiros">
-          <div className="partners-copy">
-            <h2>Parceiros</h2>
+        <div className="services-content">
+          <span className="services-kicker" data-reveal="up">
+            Sobre o processo
+          </span>
+
+          <h2 data-reveal="up">
+            <span className="services-title-line">Do rascunho ao ar,</span>
+            <span className="services-title-line">com estrutura para crescer.</span>
+          </h2>
+
+          <p data-reveal="up">
+            Combinamos estratégia, design e desenvolvimento para transformar ideias,
+            processos manuais e operações desorganizadas em sistemas web claros,
+            eficientes e prontos para uso.
+          </p>
+
+          <div className="services-stats" data-reveal="up">
+            {stats.map((stat) => (
+              <div className="service-stat" key={stat.label}>
+                <strong>{stat.value}</strong>
+                <span>{stat.label}</span>
+              </div>
+            ))}
           </div>
 
-          <div className="partners-slider">
-            <div className="partners-rail partners-rail-primary">
-              {[...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos].map((partner, index) => (
+          <a
+            href="#process"
+            className="services-link"
+            onClick={(event) => handleNavClick(event, "#process")}
+            data-reveal="up"
+          >
+            Ver processo
+            <ArrowUpRight size={14} />
+          </a>
+        </div>
+      </div>
+
+      <div className="partners-showcase" aria-label="Parceiros">
+        <div className="partners-copy">
+          <h2>Parceiros</h2>
+        </div>
+
+        <div className="partners-slider">
+          <div className="partners-rail partners-rail-primary">
+            {[...partnerLogos, ...partnerLogos, ...partnerLogos, ...partnerLogos].map(
+              (partner, index) => (
                 <div className="partner-logo-card" key={`primary-${partner.name}-${index}`}>
                   <img src={partner.image} alt={partner.name} draggable={false} />
                 </div>
-              ))}
-            </div>
+              )
+            )}
+          </div>
 
-            <div className="partners-rail partners-rail-secondary" aria-hidden="true">
-              {[...partnerLogos]
-                .reverse()
-                .concat([...partnerLogos].reverse(), [...partnerLogos].reverse(), [...partnerLogos].reverse())
-                .map((partner, index) => (
-                  <div className="partner-logo-card partner-logo-card-ghost" key={`secondary-${partner.name}-${index}`}>
-                    <img src={partner.image} alt="" draggable={false} />
-                  </div>
-                ))}
-            </div>
+          <div className="partners-rail partners-rail-secondary" aria-hidden="true">
+            {[...partnerLogos]
+              .reverse()
+              .concat([...partnerLogos].reverse(), [...partnerLogos].reverse(), [
+                ...partnerLogos,
+              ].reverse())
+              .map((partner, index) => (
+                <div
+                  className="partner-logo-card partner-logo-card-ghost"
+                  key={`secondary-${partner.name}-${index}`}
+                >
+                  <img src={partner.image} alt="" draggable={false} />
+                </div>
+              ))}
           </div>
         </div>
       </div>

@@ -1,0 +1,124 @@
+/* ================================================
+   HERO NUMBERS
+   ================================================ */
+
+.hero-numbers {
+  position: relative;
+  z-index: 5;
+  width: min(1080px, calc(100vw - 2rem));
+  margin: -6rem auto 0;
+  padding: 0 0 4.5rem;
+}
+
+/* CARD — entrada com slide-up + fade */
+.hero-numbers-card {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow:
+    0 24px 70px rgba(16, 32, 44, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms cubic-bezier(0.19, 1, 0.22, 1),
+    transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.hero-numbers-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ITEM — entrada escalonada */
+.hero-number-item {
+  display: grid;
+  gap: 0.5rem;
+  min-height: 130px;
+  padding: 1.4rem 1.2rem;
+  border-right: 1px solid rgba(16, 19, 26, 0.08);
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 560ms cubic-bezier(0.19, 1, 0.22, 1) var(--item-delay, 0ms),
+    transform 560ms cubic-bezier(0.19, 1, 0.22, 1) var(--item-delay, 0ms);
+}
+
+.hero-number-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-number-item:last-child {
+  border-right: 0;
+}
+
+/* NÚMERO — pulse sutil ao terminar a contagem */
+.hero-number-item strong {
+  display: block;
+  color: #10131a;
+  font-size: clamp(2.1rem, 3vw, 3.1rem);
+  font-weight: 300;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  transition: transform 220ms ease;
+}
+
+.hero-number-item:hover strong {
+  transform: scale(1.06);
+}
+
+.hero-number-item span {
+  color: rgba(16, 19, 26, 0.58);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  transition: color 220ms ease;
+}
+
+.hero-number-item:hover span {
+  color: rgba(16, 19, 26, 0.78);
+}
+
+/* ---- RESPONSIVO ---- */
+@media (max-width: 860px) {
+  .hero-numbers-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-number-item:nth-child(2) {
+    border-right: 0;
+  }
+
+  .hero-number-item:nth-child(1),
+  .hero-number-item:nth-child(2) {
+    border-bottom: 1px solid rgba(16, 19, 26, 0.08);
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-numbers {
+    margin-top: -3rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .hero-numbers-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-number-item {
+    border-right: 0;
+    border-bottom: 1px solid rgba(16, 19, 26, 0.08);
+  }
+
+  .hero-number-item:last-child {
+    border-bottom: 0;
+  }
+}
