@@ -13,7 +13,7 @@ const prototypes = {
       description:
         "Dashboard completo para acompanhar clientes, métricas, receita e operação em tempo real.",
       image:
-        "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80",
+        "https://imgs.search.brave.com/d6Sxs5IK2xMgB3Sbqg6OEy3VXI9uD0wkHsqKjzGOkOk/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zMy1m/aWdtYS1odWJmaWxl/LWltYWdlcy1wcm9k/dWN0aW9uLmZpZ21h/LmNvbS9odWIvZmls/ZS9jYXJvdXNlbC9p/bWcvMDYxOTEzNmEz/MjQ3Y2UxOTliNjll/NmIxMWE4N2MyYzg3/NWQwNTZkMw",
       miniImage:
         "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=220&q=80",
       size: "tall",
@@ -24,7 +24,7 @@ const prototypes = {
       description:
         "Protótipo para chatbot com respostas automáticas, histórico de conversas e análise de leads.",
       image:
-        "https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80",
+        "https://imgs.search.brave.com/yoE47As9146XU4Goq6TXULeIRnKnIDgvaVW0o2NasB8/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWcu/bWFnbmlmaWMuY29t/L2ZyZWUtdmVjdG9y/L3RyYXZlbC1sYW5k/aW5nLXBhZ2UtdGVt/cGxhdGUtd2l0aC1p/bWFnZV81MjY4My0z/MDM0NS5qcGc_c2Vt/dD1haXNfaHlicmlk/Jnc9NzQwJnE9ODA",
       miniImage:
         "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=220&q=80",
       size: "medium",
@@ -35,7 +35,7 @@ const prototypes = {
       description:
         "Interface mobile para fluxo de cadastro, autenticação, assinatura e área do usuário.",
       image:
-        "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=900&q=80",
+        "https://imgs.search.brave.com/4pAs8O8hzl7R8S01A9vEV1bWdbhUrtTJghfcuF2Y0mw/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/ZHJpYmJibGUuY29t/L3VzZXJ1cGxvYWQv/MTg2NzY1NzcvZmls/ZS9zdGlsbC1hMDg3/ZDhjNjk0OGUyNjMy/MDVlNDY4MmNhYTQw/NDg1Ny5wbmc_Zm9y/bWF0PXdlYnAmcmVz/aXplPTQwMHgzMDAm/dmVydGljYWw9Y2Vu/dGVy",
       miniImage:
         "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=220&q=80",
       size: "large",
@@ -46,7 +46,7 @@ const prototypes = {
       description:
         "Página de venda com estrutura visual forte, seções comerciais e foco em conversão.",
       image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80",
+        "https://imgs.search.brave.com/qC--QRZ0LF86dzP1xnWbuu4a28istQ_EZWTzbK0qZSo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9uZWls/cGF0ZWwuY29tL3dw/LWNvbnRlbnQvdXBs/b2Fkcy8yMDIzLzA2/L0xhbmRpbmctUGFn/ZS1FeGFtcGxlcy0w/MDktNzAweDM4MC5q/cGc",
       miniImage:
         "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=220&q=80",
       size: "quote",

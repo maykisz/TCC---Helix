@@ -8,7 +8,7 @@ const problems = [
     number: "01",
     title: "Processos manuais demorados",
     text: "Automatize rotinas repetitivas, reduza retrabalho e devolva tempo operacional para a equipe.",
-    image: "/imgs/problems/processos.jpg",
+    image: "/imgs/problems/operacao.jpg",
   },
   {
     number: "02",

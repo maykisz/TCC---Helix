@@ -23,7 +23,7 @@ import "./tela-inicial/process.css";
 import "./tela-inicial/testimonials.css";
 import "./tela-inicial/faq.css";
 import "./tela-inicial/heronumber.css";
-import "./tela-inicial/PrototypeShowcase.css";
+import "./tela-inicial/PrototypeShowcase.css";  
 
 function useScrollReveal() {
   useEffect(() => {
@@ -71,7 +71,6 @@ export default function Home() {
       <Process />
       <Testimonials />
       <Faq />
-
       <SiteFooter />
     </main>
   );
