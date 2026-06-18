@@ -4,7 +4,7 @@ const copy = {
   processSteps: {
     kicker: "Processo",
     title: "Da conversa inicial ao sistema rodando.",
-    text: "Sem excesso de etapas. Primeiro entendemos o problema, depois desenhamos uma versão possível e construímos com você por perto.",
+    text: "Sem excesso de etapas. Primeiro entendemos o problema, depois desenhamos uma primeira versão possível e construímos com você por perto.",
     items: [
       {
         title: "Diagnóstico",
@@ -15,8 +15,8 @@ const copy = {
         text: "Definimos funcionalidades, prioridades e o melhor caminho para a primeira versão.",
       },
       {
-        title: "Interface",
-        text: "Desenhamos telas claras para validar a experiência antes do desenvolvimento.",
+        title: "Protótipo validável",
+        text: "Desenhamos telas claras para validar a experiência antes de avançar para o desenvolvimento.",
       },
       {
         title: "Desenvolvimento",
@@ -48,6 +48,10 @@ export function Process() {
           </article>
         ))}
       </div>
+
+      <a className="process-cta" href="/contato">
+        Diagnosticar meu processo
+      </a>
     </section>
   );
 }

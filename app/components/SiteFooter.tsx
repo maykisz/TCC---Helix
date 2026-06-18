@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Instagram, Mail, MessageCircle } from "lucide-react";
+import { ArrowUpRight, Mail, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import styles from "./site-chrome.module.css";
 
@@ -66,9 +66,9 @@ export function SiteFooter() {
             <Mail size={14} />
             contato@helix.dev
           </a>
-          <a href="https://instagram.com/" target="_blank" rel="noreferrer">
-            <Instagram size={14} />
-            Instagram
+          <a href="/contato">
+            <ArrowUpRight size={14} />
+            Solicitar proposta
           </a>
         </div>
 

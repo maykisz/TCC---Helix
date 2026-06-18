@@ -33,7 +33,7 @@
   max-width: 500px;
   margin: 0;
   color: #000000;
-  margin-top: 6rem;
+  margin-top: clamp(1rem, 5vw, 4rem);
   font-size: clamp(3rem, 4.6vw, 6rem);
   font-weight: 200;
   line-height: 0.96;
@@ -124,6 +124,26 @@
 
 .faq-list.is-visible .faq-item:nth-child(5) {
   animation-delay: 340ms !important;
+}
+
+.faq-list.is-visible .faq-item:nth-child(6) {
+  animation-delay: 425ms !important;
+}
+
+.faq-list.is-visible .faq-item:nth-child(7) {
+  animation-delay: 510ms !important;
+}
+
+.faq-list.is-visible .faq-item:nth-child(8) {
+  animation-delay: 595ms !important;
+}
+
+.faq-list.is-visible .faq-item:nth-child(9) {
+  animation-delay: 680ms !important;
+}
+
+.faq-list.is-visible .faq-item:nth-child(10) {
+  animation-delay: 765ms !important;
 }
 
 @media (max-width: 720px) {

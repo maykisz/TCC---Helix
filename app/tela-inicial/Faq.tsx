@@ -13,11 +13,19 @@ const copy = {
       },
       {
         question: "Trabalham com empresas de qualquer segmento?",
-        answer: "Sim. Já desenvolvemos soluções para diferentes setores — o que muda é o contexto, não a qualidade.",
+        answer: "Sim. O ponto de partida é entender o fluxo, as regras e as ferramentas que a operação já usa para desenhar uma solução adequada ao contexto.",
       },
       {
         question: "Como funciona o processo de desenvolvimento?",
         answer: "Começamos entendendo o problema, mapeamos os requisitos, desenvolvemos em ciclos curtos e validamos com você em cada etapa.",
+      },
+      {
+        question: "Quanto tempo leva para ter uma primeira versão?",
+        answer: "Depende do escopo, mas a primeira etapa sempre busca reduzir incerteza: diagnóstico, prioridades e um caminho claro para uma versão inicial utilizável.",
+      },
+      {
+        question: "Vocês dão suporte depois da entrega?",
+        answer: "Sim. Podemos combinar manutenção, melhorias evolutivas, ajustes de uso e acompanhamento técnico conforme a necessidade do projeto.",
       },
       {
         question: "Consigo acompanhar o andamento do projeto?",

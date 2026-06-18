@@ -17,15 +17,15 @@ const partnerLogoReverseLoop = Array.from({ length: 8 }, () => [...partnerLogos]
 const serviceTypes = [
   {
     value: "01",
-    label: "sistemas internos",
+    label: "Sistemas internos para centralizar a operação",
   },
   {
     value: "02",
-    label: "automações",
+    label: "Automações para reduzir tarefas repetitivas",
   },
   {
     value: "03",
-    label: "sites e SaaS",
+    label: "Sites, dashboards e SaaS para vender e escalar",
   },
 ] as const;
 
@@ -99,8 +99,8 @@ export function Services() {
           </span>
 
           <h2 data-reveal="up">
-            <span className="services-title-line">Do problema ao sistema</span>
-            <span className="services-title-line">pronto para uso.</span>
+            <span className="services-title-line">Do processo travado</span>
+            <span className="services-title-line">ao software em uso.</span>
           </h2>
 
           <p data-reveal="up">
@@ -141,7 +141,8 @@ export function Services() {
         aria-label="Parceiros"
       >
         <div className="partners-copy">
-          <h2>Parceiros</h2>
+          <span>Referências visuais e projetos</span>
+          <h2>Marcas, produtos e operações que inspiram o nível de entrega.</h2>
         </div>
 
         <div className="partners-slider">

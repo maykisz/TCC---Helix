@@ -63,6 +63,8 @@ export function Problems() {
     <section className="problems-section" id="problems" data-nav-theme="light">
       <div className="problems-wrapper">
         <div className="problems-intro" data-reveal="up">
+          <span>Problemas que viram software</span>
+          <h2>Quando a operação começa a pesar, o sistema precisa trabalhar junto.</h2>
           <p>
             Se sua operação depende de planilhas, mensagens soltas e tarefas
             manuais, a tecnologia certa pode virar controle, tempo e venda.
@@ -97,7 +99,7 @@ export function Problems() {
                   <p>{problem.text}</p>
 
                   <a href="/contato" className="problem-link">
-                    Resolver isso
+                    Quero resolver isso
                     <ArrowUpRight size={15} />
                   </a>
                 </div>

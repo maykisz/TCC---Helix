@@ -6,22 +6,22 @@ const benefits = [
   {
     value: 10,
     suffix: "h+",
-    label: "economizadas por semana com automacao",
+    label: "rotinas que podem deixar de ser manuais",
   },
   {
     value: 70,
     suffix: "%",
-    label: "mais potencial de venda com sites estrategicos",
+    label: "menos dispersão quando dados ficam centralizados",
   },
   {
     value: 1,
     suffix: "",
-    label: "sistema para centralizar dados e operacao",
+    label: "sistema sob medida para conectar a operação",
   },
   {
     value: 24,
     suffix: "/7",
-    label: "atendimento e processos rodando no automatico",
+    label: "fluxos digitais disponíveis no automático",
   },
 ] as const;
 

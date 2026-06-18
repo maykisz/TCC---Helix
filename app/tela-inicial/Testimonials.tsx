@@ -5,53 +5,48 @@ import type { CSSProperties } from "react";
 
 const copy = {
   testimonials: {
-    title: "Resultados que aparecem na rotina de quem usa.",
-    text: "Depoimentos de clientes e parceiros que passaram a operar com mais clareza depois de transformar processos em software.",
+    title: "Resultados esperados quando o software entra na rotina.",
+    text: "Cenários comuns em projetos sob medida: menos informação espalhada, mais previsibilidade e fluxos que deixam de depender de cobrança manual.",
     items: [
       {
         quote:
-          "A Helix tirou nossa operação das planilhas e transformou tudo em um painel simples. O time entendeu rápido o que era prioridade.",
+          "Solicitações, responsáveis e prazos deixam de ficar em conversas soltas e passam a aparecer em uma fila única de trabalho.",
         result: "A operação ganhou mais clareza para acompanhar solicitações e indicadores.",
-        name: "Marina Duarte",
-        detail: "Operações, Orion Ops",
-        photo:
-          "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80",
+        name: "Operação interna",
+        detail: "Controle de tarefas e indicadores",
+        photo: "/imgs/problems/operacao.jpg",
       },
       {
         quote:
-          "O projeto saiu com cara de produto de verdade. Design limpo, fluxo claro e uma base técnica pronta para crescer.",
+          "Uma ideia de SaaS pode sair do rascunho com fluxo navegável, telas claras e uma base técnica preparada para evoluir.",
         result: "A primeira versão ficou pronta para apresentar, validar e evoluir.",
-        name: "Rafael Nunes",
-        detail: "Founder, Lumina Launch",
-        photo:
-          "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80",
+        name: "Produto digital",
+        detail: "Protótipo e MVP SaaS",
+        photo: "/imgs/problems/saas.jpg",
       },
       {
         quote:
-          "A entrega foi objetiva. Eles conectaram automações, área de cliente e indicadores sem complicar a rotina da equipe.",
+          "Atendimentos repetitivos podem ser qualificados, registrados e encaminhados automaticamente para o próximo passo.",
         result: "Menos tarefas manuais e mais visibilidade sobre o atendimento.",
-        name: "Bianca Torres",
-        detail: "Diretora, Genesys Cloud",
-        photo:
-          "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=900&q=80",
+        name: "Atendimento",
+        detail: "Automação e triagem",
+        photo: "/imgs/problems/atendimento.jpg",
       },
       {
         quote:
-          "A conversa começou pelo nosso problema, não pela tecnologia. Isso deixou o projeto mais direto e fácil de acompanhar.",
+          "O escopo fica mais direto quando começa pelo processo real: quem faz, onde trava, o que precisa ser medido e o que pode automatizar.",
         result: "O escopo ficou mais enxuto, com foco no que precisava rodar primeiro.",
-        name: "Lucas Almeida",
-        detail: "Comercial, parceiro Helix",
-        photo:
-          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=900&q=80",
+        name: "Diagnóstico",
+        detail: "Mapeamento de fluxo",
+        photo: "/imgs/problems/sistema.jpg",
       },
       {
         quote:
-          "O sistema organizou informações que antes ficavam espalhadas. Ficou mais fácil entender o que estava parado e o que precisava de atenção.",
+          "Planilhas continuam úteis, mas deixam de ser o centro da operação quando dados críticos passam para um painel organizado.",
         result: "Mais controle sobre tarefas, responsáveis e próximos passos.",
-        name: "Camila Rocha",
-        detail: "Gestão, cliente Helix",
-        photo:
-          "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80",
+        name: "Gestão",
+        detail: "Dados centralizados",
+        photo: "/imgs/problems/planilhas.jpg",
       },
     ],
   },
