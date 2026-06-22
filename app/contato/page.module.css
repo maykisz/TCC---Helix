@@ -29,10 +29,28 @@
   padding: clamp(5rem, 10vw, 9rem) max(1.25rem, calc((100vw - 1240px) / 2)) clamp(5rem, 9vw, 8rem);
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 50% 88%, rgba(126, 238, 255, 0.46), transparent 34rem),
-    radial-gradient(ellipse at 28% 78%, rgba(0, 130, 214, 0.26), transparent 30rem),
-    radial-gradient(ellipse at 74% 76%, rgba(0, 205, 222, 0.22), transparent 31rem),
-    linear-gradient(180deg, #020202 0%, #030405 44%, #061d2d 62%, #087fae 80%, #000000 100%);
+    radial-gradient(ellipse at 50% 70%, rgba(126, 238, 255, 0.42), transparent 34rem),
+    radial-gradient(ellipse at 28% 64%, rgba(0, 130, 214, 0.25), transparent 30rem),
+    radial-gradient(ellipse at 74% 62%, rgba(0, 205, 222, 0.2), transparent 31rem),
+    linear-gradient(180deg, #020202 0%, #030405 36%, #061d2d 52%, #087fae 66%, #021018 84%, #000000 100%);
+}
+
+.hero::after {
+  position: absolute;
+  right: 0;
+  bottom: -1px;
+  left: 0;
+  height: clamp(180px, 24vw, 300px);
+  content: "";
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0), #000000 78%);
+  pointer-events: none;
+}
+
+.hero > span,
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 1;
 }
 
 .hero span {
@@ -60,10 +78,17 @@
 }
 
 .contactGrid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  padding: 0 max(1.25rem, calc((100vw - 1240px) / 2)) clamp(4rem, 8vw, 7rem);
+  margin-top: -1px;
+  padding: clamp(3.5rem, 7vw, 6rem) max(1.25rem, calc((100vw - 1240px) / 2)) clamp(4rem, 8vw, 7rem);
+  background:
+    linear-gradient(180deg, #000000 0%, #000000 32%, rgba(0, 0, 0, 0.96) 100%),
+    radial-gradient(ellipse at 50% 0%, rgba(112, 232, 255, 0.08), transparent 28rem),
+    #000000;
 }
 
 .contactGrid a {
@@ -75,11 +100,21 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 8px;
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.045);
-  transition: background 220ms ease, transform 220ms ease;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(112, 232, 255, 0.1), transparent 12rem),
+    rgba(255, 255, 255, 0.045);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 22px 70px rgba(0, 0, 0, 0.22);
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    color 220ms ease,
+    transform 220ms ease;
 }
 
 .contactGrid a:hover {
+  border-color: rgba(112, 232, 255, 0.3);
   background: #ffffff;
   color: #151515;
   transform: translateY(-6px);
@@ -248,28 +283,217 @@
 }
 
 .briefing {
+  position: relative;
   display: grid;
-  gap: 2rem;
-  padding: clamp(4rem, 8vw, 7rem) max(1.25rem, calc((100vw - 1240px) / 2));
-  background: #ffffff;
+  gap: clamp(2rem, 5vw, 4rem);
+  overflow: hidden;
+  padding: clamp(5rem, 9vw, 8rem) max(1.25rem, calc((100vw - 1240px) / 2));
+  background:
+    radial-gradient(circle at 88% 12%, rgba(112, 232, 255, 0.16), transparent 22rem),
+    radial-gradient(circle at 8% 76%, rgba(112, 232, 255, 0.1), transparent 20rem),
+    linear-gradient(180deg, #ffffff 0%, #f8fcfd 100%);
   color: #151515;
 }
 
-.briefing h2 {
-  font-size: clamp(2.3rem, 5vw, 5rem);
+.briefing::before {
+  position: absolute;
+  inset: clamp(1rem, 3vw, 3rem);
+  content: "";
+  border: 1px solid rgba(16, 19, 26, 0.06);
+  border-radius: 24px;
+  background:
+    linear-gradient(90deg, rgba(16, 19, 26, 0.028) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(16, 19, 26, 0.022) 1px, transparent 1px);
+  background-size: 76px 76px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.65), transparent 78%);
+  pointer-events: none;
 }
 
-.briefing div {
+.briefingHeader,
+.briefingGrid {
+  position: relative;
+}
+
+.briefingHeader {
+  display: grid;
+  gap: 1rem;
+  max-width: 980px;
+}
+
+.briefingHeader > span {
+  width: fit-content;
+  min-height: 34px;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid rgba(0, 140, 180, 0.16);
+  border-radius: 999px;
+  color: #007fa4;
+  background: rgba(255, 255, 255, 0.76);
+  box-shadow: 0 16px 42px rgba(0, 140, 180, 0.1);
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.briefingHeader h2 {
+  max-width: 960px;
+  margin: 0;
+  color: #10131a;
+  font-size: clamp(3rem, 7vw, 7.6rem);
+  font-weight: 300;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+  text-wrap: balance;
+}
+
+.briefingHeader p {
+  max-width: 700px;
+  margin: 0;
+  color: rgba(16, 19, 26, 0.62);
+  font-size: clamp(1rem, 1.35vw, 1.22rem);
+  line-height: 1.72;
+}
+
+.briefingGrid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  gap: clamp(0.9rem, 2vw, 1.25rem);
 }
 
-.briefing span {
-  padding: 1rem;
+.briefingGrid article {
+  position: relative;
+  display: grid;
+  gap: 1.35rem;
+  min-height: 255px;
+  align-content: space-between;
+  padding: clamp(1rem, 2vw, 1.35rem);
+  overflow: hidden;
+  border: 1px solid rgba(16, 19, 26, 0.08);
   border-radius: 8px;
-  background: #f5f5f3;
-  line-height: 1.45;
+  background:
+    radial-gradient(circle at 100% 0%, rgba(112, 232, 255, 0.16), transparent 11rem),
+    rgba(255, 255, 255, 0.82);
+  box-shadow:
+    0 22px 70px rgba(16, 19, 26, 0.075),
+    inset 0 1px 0 rgba(255, 255, 255, 0.86);
+  transition:
+    border-color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.briefingGrid article::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background:
+    linear-gradient(115deg, transparent 0%, transparent 36%, rgba(255, 255, 255, 0.74) 48%, transparent 60%, transparent 100%),
+    linear-gradient(180deg, transparent 42%, rgba(16, 19, 26, 0.035));
+  opacity: 0.78;
+  pointer-events: none;
+  transform: translateX(-24%);
+  transition:
+    opacity 260ms ease,
+    transform 520ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.briefingGrid article::after {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(0, 140, 180, 0.24), transparent);
+  opacity: 0;
+  transform: scaleX(0.74);
+  transition:
+    opacity 220ms ease,
+    transform 260ms ease;
+}
+
+.briefingGrid article:hover {
+  border-color: rgba(0, 140, 180, 0.2);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(112, 232, 255, 0.24), transparent 12rem),
+    rgba(255, 255, 255, 0.94);
+  box-shadow:
+    0 32px 96px rgba(16, 19, 26, 0.12),
+    0 16px 48px rgba(0, 140, 180, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95);
+  transform: translateY(-8px);
+}
+
+.briefingGrid article:hover::before {
+  opacity: 1;
+  transform: translateX(14%);
+}
+
+.briefingGrid article:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.briefingGrid span,
+.briefingGrid h3,
+.briefingGrid p {
+  position: relative;
+}
+
+.briefingGrid span {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 58px;
+  min-height: 40px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 140, 180, 0.15);
+  border-radius: 999px;
+  color: rgba(0, 107, 138, 0.62);
+  background: rgba(112, 232, 255, 0.12);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  transition:
+    border-color 220ms ease,
+    color 220ms ease,
+    background 220ms ease,
+    box-shadow 220ms ease,
+    transform 220ms ease;
+}
+
+.briefingGrid h3 {
+  margin: 0;
+  color: #10131a;
+  font-size: clamp(1.2rem, 1.65vw, 1.65rem);
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  transition: color 220ms ease, transform 220ms ease;
+}
+
+.briefingGrid p {
+  margin: 0;
+  color: rgba(16, 19, 26, 0.64);
+  font-size: 0.94rem;
+  line-height: 1.62;
+  transition: color 220ms ease;
+}
+
+.briefingGrid article:hover span {
+  border-color: rgba(0, 140, 180, 0.28);
+  color: #007fa4;
+  background: rgba(112, 232, 255, 0.2);
+  box-shadow: 0 16px 38px rgba(0, 140, 180, 0.14);
+  transform: translateY(-2px);
+}
+
+.briefingGrid article:hover h3 {
+  color: #071014;
+  transform: translateY(-1px);
+}
+
+.briefingGrid article:hover p {
+  color: rgba(16, 19, 26, 0.76);
 }
 
 @media (max-width: 880px) {
@@ -282,8 +506,12 @@
   }
 
   .contactGrid,
-  .briefing div {
+  .briefingGrid {
     grid-template-columns: 1fr;
+  }
+
+  .briefingGrid article {
+    min-height: 210px;
   }
 
   .formSection {
@@ -298,5 +526,27 @@
 @media (max-width: 620px) {
   .form {
     grid-template-columns: 1fr;
+  }
+
+  .briefingHeader h2 {
+    font-size: clamp(2.45rem, 13vw, 4rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .briefingGrid article,
+  .briefingGrid article::before,
+  .briefingGrid article::after,
+  .briefingGrid span,
+  .briefingGrid h3,
+  .briefingGrid p {
+    transition: none;
+  }
+
+  .briefingGrid article:hover,
+  .briefingGrid article:hover::before,
+  .briefingGrid article:hover span,
+  .briefingGrid article:hover h3 {
+    transform: none;
   }
 }

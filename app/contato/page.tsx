@@ -11,6 +11,25 @@ const contact = [
   { icon: MessageCircle, title: "Briefing", text: "Conte o que precisa virar software", href: "mailto:contato@helix.dev" },
 ];
 
+const briefingItems = [
+  {
+    title: "Problema principal",
+    text: "Qual gargalo mais atrapalha hoje: retrabalho, planilhas, atendimento lento, falta de controle ou vendas sem acompanhamento?",
+  },
+  {
+    title: "Pessoas envolvidas",
+    text: "Quem vai usar o sistema no dia a dia e quem precisa acompanhar indicadores, aprovar etapas ou receber notificações?",
+  },
+  {
+    title: "Fluxo atual",
+    text: "Como o processo funciona agora? Vale citar ferramentas, planilhas, mensagens, documentos e etapas que já existem.",
+  },
+  {
+    title: "Resultado esperado",
+    text: "O projeto precisa vender, operar, automatizar ou validar uma ideia? Isso ajuda a definir a primeira versão certa.",
+  },
+];
+
 export default function ContatoPage() {
   return (
     <main className={styles.page}>
@@ -50,12 +69,22 @@ export default function ContatoPage() {
       </section>
 
       <section className={styles.briefing} data-nav-theme="light">
-        <h2>Antes da conversa, pense nestes pontos.</h2>
-        <div>
-          <span>Qual problema você quer resolver?</span>
-          <span>Quem vai usar o sistema?</span>
-          <span>Existe algum fluxo ou planilha hoje?</span>
-          <span>O projeto precisa vender, operar ou automatizar?</span>
+        <div className={styles.briefingHeader}>
+          <span>Preparação</span>
+          <h2>Antes da conversa, pense nestes pontos.</h2>
+          <p>
+            Não precisa chegar com escopo fechado. Essas respostas ajudam a transformar
+            uma ideia solta em uma primeira versão possível, clara e priorizada.
+          </p>
+        </div>
+        <div className={styles.briefingGrid}>
+          {briefingItems.map((item, index) => (
+            <article key={item.title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
         </div>
       </section>
       <SiteFooter />
